@@ -1,0 +1,9 @@
+# node modules & other files & folders
+node_modules
+.vscode
+.dist
+
+# dotenv variables
+.env
+*.env
+.env*

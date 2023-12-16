@@ -6,8 +6,11 @@ import compression from "compression";
 import cors from "cors";
 import mongoose from "mongoose";
 import router from "./router/index";
+import dotenv from "dotenv";
 
-const port = 8080;
+dotenv.config({ path: "./.env" });
+const PORT = process.env.SERVER_PORT;
+const MONGO_URL = process.env.MONGODB_URI;
 const app = express();
 
 app.use(
@@ -22,11 +25,9 @@ app.use(bodyParser.json());
 
 const server = http.createServer(app);
 
-server.listen(port, () => {
-  console.log(`\nServer running at http://localhost:${port}\n`);
+server.listen(PORT, () => {
+  console.log(`\nServer running at http://localhost:${PORT}\n`);
 });
-
-const MONGO_URL = "mongodb://0.0.0.0:27017/sikkurestapi";
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
